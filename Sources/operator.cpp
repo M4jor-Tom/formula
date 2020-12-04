@@ -31,7 +31,7 @@ void Operator::displayPin(ostringstream &stream)
         stream << "Display error";
         return;
     }
-    _lOpPt -> displayN(stream);
-    _rOpPt -> displayN(stream);
+    _lOpPt -> displayPin(stream);
+    _rOpPt -> displayPin(stream);
     stream << _operator;
 }

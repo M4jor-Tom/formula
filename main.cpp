@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
     );
 
     s.displayN(_stream);
+    _stream << endl;
+    s.displayPin(_stream);
 
     //Display result
     txt.setText(_stream.str().c_str());
