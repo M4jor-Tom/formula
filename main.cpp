@@ -18,7 +18,13 @@ int main(int argc, char *argv[])
     ostringstream _stream;
 
     //Operating
-    Sum s(new Value(6), new Product(new Value(3), new Value(4)));
+    Sum s(
+        new Value(6),
+        new Product(
+            new Value(3),
+            new Value(4)
+        )
+    );
 
     s.displayN(_stream);
 
