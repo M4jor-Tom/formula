@@ -34,3 +34,22 @@ bool Expression::newVariable(string name, float value)
 
     return true;
 }
+
+bool Expression::setVariable(string name, float value)
+{
+    int seekResult = seekVariable(name);
+    if(seekResult == -1)
+    {
+        return newVariable(name, value);
+    }
+    else
+    {
+        int count;
+        list<float>::iterator it;
+        for(count = 0, it = _values.begin(); count < _values.size(); count++, it++)
+            if(count == seekResult)
+                *it = value;
+    }
+
+    return true;
+}

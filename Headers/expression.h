@@ -17,6 +17,7 @@ public:
     void relayAssignements(const list<string> &names, const list<float> &values);
     int seekVariable(string needle);
     bool newVariable(string name, float value);
+    bool setVariable(string name, float value);
     virtual void displayN(ostringstream &stream) = 0;
     virtual void displayPin(ostringstream &stream) = 0;
     virtual bool calculable() = 0;

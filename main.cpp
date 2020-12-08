@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         Sum(
             new Variable("A"),
             new Product(
-                new Value(3),
+                new Variable("B"),
                 new Variable("A")
             )
         ),
@@ -42,6 +42,9 @@ int main(int argc, char *argv[])
 
     sums[0].newVariable("A", 5);    //<--Used to calculate
     sums[0].newVariable("A", 3);    //<--Ignored because already exists
+
+    sums[0].setVariable("B", 5);    //<--Ignored because overwritten
+    sums[0].setVariable("B", 10);    //<--Overwriting
 
     for(Sum sum:sums)
     {
