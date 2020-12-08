@@ -16,6 +16,7 @@ public:
     Operator();
 
     bool operable();
+    bool calculable() override;
     void displayN(ostringstream &stream) override;
     void displayPin(ostringstream &stream) override;
 };

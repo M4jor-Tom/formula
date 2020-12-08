@@ -18,7 +18,7 @@ Division::Division(Expression *lOpPt, Expression *rOpPt)
 
 float Division::calculate()
 {
-    if(operable())
+    if(calculable())
         return _lOpPt -> calculate() / _rOpPt -> calculate();
     else
     {

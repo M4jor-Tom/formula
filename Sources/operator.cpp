@@ -10,11 +10,22 @@ bool Operator::operable()
     return _lOpPt != NULL && _rOpPt != NULL;
 }
 
+bool Operator::calculable()
+{
+    if(operable())
+    {
+        _lOpPt -> relayAssignements(_names, _values);
+        _rOpPt -> relayAssignements(_names, _values);
+        return _lOpPt -> calculable() && _rOpPt -> calculable();
+    }
+    return false;
+}
+
 void Operator::displayN(ostringstream &stream)
 {
     if(!operable())
     {
-        stream << "Display error";
+        stream << "Unoperable";
         return;
     }
     stream << "(";
@@ -28,7 +39,7 @@ void Operator::displayPin(ostringstream &stream)
 {
     if(!operable())
     {
-        stream << "Display error";
+        stream << "Unoperable";
         return;
     }
     _lOpPt -> displayPin(stream);

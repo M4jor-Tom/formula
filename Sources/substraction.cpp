@@ -18,7 +18,7 @@ Substraction::Substraction(Expression *lOpPt, Expression *rOpPt)
 
 float Substraction::calculate()
 {
-    if(operable())
+    if(calculable())
         return _lOpPt -> calculate() - _rOpPt -> calculate();
     else
     {

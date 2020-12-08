@@ -1,14 +1,14 @@
-#ifndef VALUE_H
-#define VALUE_H
+#ifndef VARIABLE_H
+#define VARIABLE_H
 
 #include "expression.h"
 
-class Value: public Expression
+class Variable: public Expression
 {
 private:
-    float _value;
+    string _name;
 public:
-    Value(float value);
+    Variable(string name);
 
     bool calculable() override;
     float calculate() override;
@@ -16,4 +16,4 @@ public:
     void displayPin(ostringstream &stream) override;
 };
 
-#endif // VALUE_H
+#endif // VARIABLE_H

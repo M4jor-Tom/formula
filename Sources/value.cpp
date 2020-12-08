@@ -5,6 +5,11 @@ Value::Value(float value): _value(value)
 
 }
 
+bool Value::calculable()
+{
+    return true;
+}
+
 float Value::calculate()
 {
     return _value;
