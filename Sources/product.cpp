@@ -18,7 +18,7 @@ Product::Product(Expression *lOpPt, Expression *rOpPt)
 
 float Product::calculate()
 {
-    if(operable())
+    if(calculable())
         return _lOpPt -> calculate() * _rOpPt -> calculate();
     else
     {

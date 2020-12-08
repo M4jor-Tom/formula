@@ -18,7 +18,7 @@ Sum::Sum(Expression *lOpPt, Expression *rOpPt)
 
 float Sum::calculate()
 {
-    if(operable())
+    if(calculable())
         return _lOpPt -> calculate() + _rOpPt -> calculate();
     else
     {

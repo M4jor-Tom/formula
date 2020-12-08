@@ -17,19 +17,43 @@ int main(int argc, char *argv[])
     QTextEdit txt;
     ostringstream _stream;
 
-    //Operating
-    Sum s(
-        new Value(6),
-        new Product(
-            new Value(3),
-            new Value(4)
-        )
-    );
+    Division sums[] =
+    {
+        //Operating just values
+        Division(
+            new Value(6),
+            new Product(
+                new Value(3),
+                new Value(4)
+            )
+        ),
 
-    s.displayN(_stream);
-    _stream << endl;
-    s.displayPin(_stream);
-    _stream << endl << s.calculate();
+        //Operating named values
+        Division(
+            new Value("A", 6),
+            new Product(
+                new Value(3),
+                new Value("B", 4)
+            )
+        ),
+
+        //Can't operate this one
+        Division(
+            new Value(6),
+            new Product(
+                new Value(3),
+                new Value("C")
+            )
+        )
+    };
+
+    for(Division sum:sums)
+    {
+        _stream << "Classic: \t"; sum.displayN(_stream);
+        _stream << endl;
+        _stream << "R.polish: \t"; sum.displayPin(_stream);
+        _stream << endl << "Result: \t" << sum.calculate() << endl << endl;
+    }
 
     //Display result
     txt.setText(_stream.str().c_str());

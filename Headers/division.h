@@ -8,6 +8,7 @@ class Division : public Operator
 public:
     Division();
     Division(Expression *lOpPt, Expression *rOpPt);
+    //bool calculable() override;
     float calculate() override;
 };
 

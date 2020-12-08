@@ -5,6 +5,14 @@ Operator::Operator(): _lOpPt(NULL), _rOpPt(NULL), _operator("***undefined***")
 
 }
 
+bool Operator::calculable()
+{
+    if(operable())
+        //Walkaround for division by 0 detection
+        return _lOpPt -> calculable() && _rOpPt -> calculable() && (_operator != "/" || _rOpPt -> calculate() != 0.0);
+    else return false;
+}
+
 bool Operator::operable()
 {
     return _lOpPt != NULL && _rOpPt != NULL;

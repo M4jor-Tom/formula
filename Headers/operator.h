@@ -15,6 +15,7 @@ protected:
 public:
     Operator();
 
+    virtual bool calculable() override;
     bool operable();
     void displayN(ostringstream &stream) override;
     void displayPin(ostringstream &stream) override;
