@@ -16,9 +16,9 @@ float Variable::calculate()
     if(calculable())
     {
         int varIndex = seekVariable(_name), valIndex = 0;
-        for(int value:_values)
+        for(Assignement *assignement:_assignements)
             if(valIndex++ == varIndex)
-                return value;
+                return assignement -> getValue();
     }
 
     return 0.0;

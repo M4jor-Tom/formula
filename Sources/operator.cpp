@@ -14,8 +14,8 @@ bool Operator::calculable()
 {
     if(operable())
     {
-        _lOpPt -> relayAssignements(_names, _values);
-        _rOpPt -> relayAssignements(_names, _values);
+        _lOpPt -> relayAssignements(_assignements);
+        _rOpPt -> relayAssignements(_assignements);
         return _lOpPt -> calculable() && _rOpPt -> calculable();
     }
     return false;
