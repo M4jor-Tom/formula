@@ -41,14 +41,14 @@ int main(int argc, char *argv[])
     };
 
     //Assigning values to Variables and Variables to Expressions
-    Assignement *A = new Assignement("A", 5), *B = new Assignement("B", 10);
-    sums[0].newVariable(A);    //<--Used to calculate
+    Assignement A("A", 5), B("B", 10);
+    sums[0].newVariable(&A);    //<--Used to calculate
     sums[0].newVariable("A", 3);    //<--Ignored because already exists
 
     sums[0].setVariable("B", 5);    //<--Ignored because overwritten
-    sums[0].setVariable(B);    //<--Overwriting
+    sums[0].setVariable(&B);    //<--Overwriting
 
-    A -> setValue(12);  //<--Updates A's value in every Expression
+    A.setValue(12);  //<--Updates A's value in every Expression
 
     //Preparing results
     for(Sum sum:sums)
