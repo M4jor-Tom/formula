@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
     A.setValue(12);  //<--Updates A's value in every Expression
 
     //Preparing results
+    sums[0].displayVariables(_stream);
+    _stream << endl;
     for(Addition sum:sums)
     {
         //Display of results

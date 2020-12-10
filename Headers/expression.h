@@ -22,6 +22,7 @@ public:
     /*bool newVariable(string name, float value);
     bool setVariable(Assignement *assignement);
     bool setVariable(string name, float value);*/
+    void displayVariables(ostringstream &stream);
     virtual void displayN(ostringstream &stream) = 0;
     virtual void displayPin(ostringstream &stream) = 0;
     virtual bool calculable() = 0;

@@ -15,7 +15,7 @@ list<Assignement *> *Expression::getAssignements()
     return _assignements;
 }
 
-int  Expression::seekVariable(string needle)
+int Expression::seekVariable(string needle)
 {
     unsigned int index = 0;
     for(Assignement *_assignement:*_assignements)
@@ -24,6 +24,12 @@ int  Expression::seekVariable(string needle)
         else
             index++;
     return -1;
+}
+
+void Expression::displayVariables(ostringstream &stream)
+{
+    for(Assignement *_assignement:*_assignements)
+        stream << _assignement -> getName() << " = " << _assignement -> getValue() << endl;
 }
 
 bool Expression::newVariable(Assignement * assignement)
