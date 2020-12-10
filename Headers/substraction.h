@@ -8,6 +8,7 @@ class Substraction : public Operator
 public:
     Substraction();
     Substraction(Expression *lOpPt, Expression *rOpPt);
+    Substraction(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt);
     float calculate() override;
 };
 

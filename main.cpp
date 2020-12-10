@@ -30,14 +30,19 @@ int main(int argc, char *argv[])
             )
         ),
 
-        //Will cause null result and 'calculacble()' returning 'false' because "X" is never set
+        //Same as up there, because variables are shared between sums due to constructor
         Addition(
+            sums[0].getAssignements(),
             new Constante(5),
             new Variable("X")
         ),
 
-        //Will cause error because missing formula
-        Addition()
+        //Will cause null result and 'calculacble()' returning 'false' because "Y" is never set
+        Addition(
+            sums[0].getAssignements(),
+            new Constante(8),
+            new Variable("Y")
+        )
     };
 
     //Assigning values to Variables and Variables to Expressions

@@ -14,6 +14,15 @@ Sum::Sum(Expression *lOpPt, Expression *rOpPt)
     _lOpPt = lOpPt;
     _rOpPt = rOpPt;
     _operator = "+";
+    _assignements = new list<Assignement *>;
+}
+
+Sum::Sum(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt)
+{
+    _lOpPt = lOpPt;
+    _rOpPt = rOpPt;
+    _operator = "+";
+    _assignements = assignements;
 }
 
 float Sum::calculate()

@@ -14,6 +14,15 @@ Division::Division(Expression *lOpPt, Expression *rOpPt)
     _lOpPt = lOpPt;
     _rOpPt = rOpPt;
     _operator = "/";
+    _assignements = new list<Assignement *>;
+}
+
+Division::Division(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt)
+{
+    _lOpPt = lOpPt;
+    _rOpPt = rOpPt;
+    _operator = "-";
+    _assignements = assignements;
 }
 
 float Division::calculate()

@@ -8,6 +8,7 @@ class Sum : public Operator
 public:
     Sum();
     Sum(Expression *lOpPt, Expression *rOpPt);
+    Sum(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt);
     float calculate() override;
 };
 

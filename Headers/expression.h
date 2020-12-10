@@ -11,11 +11,12 @@ using namespace std;
 class Expression
 {
 protected:
-    list<Assignement *> _assignements;
+    list<Assignement *> *_assignements;
 public:
     Expression();
 
-    void relayAssignements(const list<Assignement *> &assignements);
+    void relayAssignements(list<Assignement *> *assignements);
+    list<Assignement *> *getAssignements();
     int seekVariable(string needle);
     bool newVariable(Assignement *assignement);
     /*bool newVariable(string name, float value);

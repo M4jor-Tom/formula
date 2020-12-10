@@ -5,15 +5,20 @@ Expression::Expression()
 
 }
 
-void Expression::relayAssignements(const list<Assignement *> &assignements)
+void Expression::relayAssignements(list<Assignement *> *assignements)
 {
     _assignements = assignements;
+}
+
+list<Assignement *> *Expression::getAssignements()
+{
+    return _assignements;
 }
 
 int  Expression::seekVariable(string needle)
 {
     unsigned int index = 0;
-    for(Assignement *_assignement:_assignements)
+    for(Assignement *_assignement:*_assignements)
         if(_assignement -> getName() == needle)
             return index;
         else
@@ -21,11 +26,11 @@ int  Expression::seekVariable(string needle)
     return -1;
 }
 
-bool Expression::newVariable(Assignement *assignement)
+bool Expression::newVariable(Assignement * assignement)
 {
     if(seekVariable(assignement -> getName()) == -1)
     {
-        _assignements.push_back(assignement);
+        _assignements -> push_back(assignement);
     }
     else
         return false;

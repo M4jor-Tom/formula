@@ -14,6 +14,15 @@ Substraction::Substraction(Expression *lOpPt, Expression *rOpPt)
     _lOpPt = lOpPt;
     _rOpPt = rOpPt;
     _operator = "-";
+    _assignements = new list<Assignement *>;
+}
+
+Substraction::Substraction(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt)
+{
+    _lOpPt = lOpPt;
+    _rOpPt = rOpPt;
+    _operator = "-";
+    _assignements = assignements;
 }
 
 float Substraction::calculate()

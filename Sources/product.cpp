@@ -14,6 +14,15 @@ Product::Product(Expression *lOpPt, Expression *rOpPt)
     _lOpPt = lOpPt;
     _rOpPt = rOpPt;
     _operator = "x";
+    _assignements = new list<Assignement *>;
+}
+
+Product::Product(list<Assignement *> *assignements, Expression *lOpPt, Expression *rOpPt)
+{
+    _lOpPt = lOpPt;
+    _rOpPt = rOpPt;
+    _operator = "-";
+    _assignements = assignements;
 }
 
 float Product::calculate()
