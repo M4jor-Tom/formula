@@ -20,11 +20,11 @@ int main(int argc, char *argv[])
 
     SymbolTable sym;
 
-    sym.addValue(Variable("A", 6));
-    sym.addValue(Variable("B", 4));
-    sym.addValue(Variable("C"));
+    sym.addVariable(Variable("A", 6));
+    sym.addVariable(Variable("B", 4));
+    sym.addVariable(Variable("C"));
 
-    sym.setValue(Value("A", 8));
+    sym.setValue(Variable("A", 18));
     //sym.deleteValue("B");   //<--Try uncommenting this to get the second Sum malfunctionning
 
     Addition sums[] =
@@ -40,19 +40,19 @@ int main(int argc, char *argv[])
 
         //Operating named values
         Addition(
-            sym.getValue("A"),
+            sym.getVariable("A"),
             new Multiplication(
                 new Constante(3),
-                sym.getValue("B")
+                sym.getVariable("B")
             )
         ),
 
         //Can't operate this one
         Addition(
-            sym.getValue("A"),
+            sym.getVariable("A"),
             new Multiplication(
                 new Constante(3),
-                sym.getValue("C")
+                sym.getVariable("C")
             )
         )
     };

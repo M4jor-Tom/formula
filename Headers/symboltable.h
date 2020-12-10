@@ -2,34 +2,34 @@
 #define SYMBOLTABLE_H
 
 #include <list>
-#include "value.h"
+#include "variable.h"
 
 class SymbolTable
 {
 private:
-    list<Value *> _values;
+    list<Variable *> _variables;
 public:
     SymbolTable();
 
-    //Get Value object from name
-    Value *getValue(const string &name);
+    //Get Variable object from name
+    Variable *getVariable(const string &name);
 
-    //Check if a value is found with given name
+    //Check if a Variable is found with given name
     bool symbolExists(const string &name) const;
 
     //TABLE EDITORS
-    //Adds a Value in table if no Value with the same name exists in exists
-    bool addValue(Value *toAdd);
-    bool addValue(const Value &toAdd);
+    //Adds a Variable in table if no Variable with the same name exists in exists
+    bool addVariable(Variable *toAdd);
+    bool addVariable(const Variable &toAdd);
 
-    //Edits a Value with the same name than the given Value, to its value
-    bool editValue(const Value &toEdit);
+    //Edits a Variable with the same name than the given variable, to its variable
+    bool editVariable(const Variable &toEdit);
 
-    //Choose between addValue() or editValue()
-    bool setValue(const Value &toSet);
+    //Choose between addVariable() or editVariable()
+    bool setValue(const Variable &toSet);
 
-    //Delete a Value from list
-    bool deleteValue(const string &name);
+    //Delete a Variable from list
+    bool deleteVariable(const string &name);
 
     //Checks if every list's slots have a non-null adress
     bool isConsistent() const;

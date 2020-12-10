@@ -9,36 +9,28 @@
 
 class Value: public Expression
 {
-private:
+protected:
     float _value;
-    string _name;
-    unsigned short int _interpretation;
 public:
-    //Constructors
+    //Constructor
     Value(float value);
-    Value(string name);
-    Value(string name, float value);
-    Value(const Value &v);
 
     //--Methods
     //Testers
-    bool calculable() const override;
+    virtual bool calculable() const override;
 
     //Setters
     bool setValue(float value);
 
     //Getters
     float calculate() const override;
-    string getRepresentation() const;
-    string getName() const;
+    virtual string getFormulaRepresentation() const;
+    virtual string getRepresentation() const;
 
     //Displayers
     void displayN(ostringstream &stream) const override;
     void displayPin(ostringstream &stream) const override;
 };
-
-//Alias (English + French)
-typedef Value Variable;
 
 //French translation
 typedef Value Constante;

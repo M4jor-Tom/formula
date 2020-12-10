@@ -5,51 +5,51 @@ SymbolTable::SymbolTable()
 
 }
 
-Value *SymbolTable::getValue(const string &name)
+Variable *SymbolTable::getVariable(const string &name)
 {
     if(symbolExists(name))
     {
-        list<Value *>::iterator v;
-        for(v = _values.begin(); v != _values.end(); v++)
+        list<Variable *>::iterator v;
+        for(v = _variables.begin(); v != _variables.end(); v++)
             if((*v) -> getName() == name)
                 return *v;
     }
-    return (Value *)NULL;
+    return (Variable *)NULL;
 }
 
 bool SymbolTable::symbolExists(const string &name) const
 {
-    for(Value *v:_values)
+    for(Variable *v:_variables)
         if(v -> getName() == name)
             return true;
 
     return false;
 }
 
-bool SymbolTable::addValue(Value *toAdd)
+bool SymbolTable::addVariable(Variable *toAdd)
 {
     if(!symbolExists(toAdd -> getName()))
-        _values.push_back(toAdd);
+        _variables.push_back(toAdd);
     else return false;
 
     return true;
 }
 
-bool SymbolTable::addValue(const Value &toAdd)
+bool SymbolTable::addVariable(const Variable &toAdd)
 {
     if(!symbolExists(toAdd.getName()))
-        _values.push_back(new Value(toAdd));
+        _variables.push_back(new Variable(toAdd));
     else return false;
 
     return true;
 }
 
-bool SymbolTable::editValue(const Value &toEdit)
+bool SymbolTable::editVariable(const Variable &toEdit)
 {
     if(symbolExists(toEdit.getName()))
     {
-        list<Value *>::iterator v;
-        for(v = _values.begin(); v != _values.end(); v++)
+        list<Variable *>::iterator v;
+        for(v = _variables.begin(); v != _variables.end(); v++)
             if((*v) -> getName() == toEdit.getName())
                 (*v) -> setValue(toEdit.calculate());
         return true;
@@ -57,25 +57,25 @@ bool SymbolTable::editValue(const Value &toEdit)
     return false;
 }
 
-bool SymbolTable::setValue(const Value &toSet)
+bool SymbolTable::setValue(const Variable &toSet)
 {
     if(symbolExists(toSet.getName()))
-        return editValue(toSet);
+        return editVariable(toSet);
 
-    return addValue(new Value(toSet));
+    return addVariable(new Variable(toSet));
 }
 
-bool SymbolTable::deleteValue(const string &name)
+bool SymbolTable::deleteVariable(const string &name)
 {
     if(symbolExists(name))
-        for(list<Value *>::iterator v = _values.begin(); v != _values.end(); v++)
+        for(list<Variable *>::iterator v = _variables.begin(); v != _variables.end(); v++)
             if((*v) -> getName() == name)
             {
                 //Deleting contained object
                 delete *v;
 
                 //Removing slot
-                _values.erase(v);
+                _variables.erase(v);
                 return true;
             }
 
@@ -84,7 +84,7 @@ bool SymbolTable::deleteValue(const string &name)
 
 bool SymbolTable::isConsistent() const
 {
-    for(Value *v:_values)
+    for(Variable *v:_variables)
         if(v == NULL)
             return false;
 
@@ -93,10 +93,10 @@ bool SymbolTable::isConsistent() const
 
 void SymbolTable::displayContent(ostringstream &stream) const
 {
-    for(Value *v:_values)
+    for(Variable *v:_variables)
     {
         if(v != NULL)
-            v -> displayN(stream);
+            stream << v -> getRepresentation();
         else
             stream << "Reading error";
         stream << endl;
