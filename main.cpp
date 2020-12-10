@@ -17,42 +17,48 @@ int main(int argc, char *argv[])
     QTextEdit txt;
     ostringstream _stream;
 
-    Division sums[] =
+    Variable A("A", 6), B("B", 4), C("C");
+
+    Addition sums[] =
     {
         //Operating just values
-        Division(
-            new Value(6),
-            new Product(
-                new Value(3),
-                new Value(4)
+        Addition(
+            new Constante(8),
+            new Multiplication(
+                new Constante(3),
+                new Constante(4)
             )
         ),
 
         //Operating named values
-        Division(
-            new Value("A", 6),
-            new Product(
-                new Value(3),
-                new Value("B", 4)
+        Addition(
+            &A,
+            new Multiplication(
+                new Constante(3),
+                &B
             )
         ),
 
         //Can't operate this one
-        Division(
-            new Value(6),
-            new Product(
-                new Value(3),
-                new Value("C")
+        Addition(
+            &A,
+            new Multiplication(
+                new Constante(3),
+                &C
             )
         )
     };
 
-    for(Division sum:sums)
+    A.afficher(_stream); _stream << endl;
+    B.afficher(_stream); _stream << endl;
+    C.afficher(_stream); _stream << endl;
+    _stream << endl;
+    for(Addition sum:sums)
     {
-        _stream << "Classic: \t"; sum.displayN(_stream);
-        _stream << endl;
-        _stream << "R.polish: \t"; sum.displayPin(_stream);
-        _stream << endl << "Result: \t" << sum.calculate() << endl << endl;
+        _stream << "Classic: \t"; sum.afficher(_stream);
+        _stream << endl << "R.polish: \t"; sum.afficherNPI(_stream);
+        _stream << endl << "Calculable: \t" << sum.calculable();
+        _stream << endl << "Result: \t" << sum.calculer() << endl << endl;
     }
 
     //Display result

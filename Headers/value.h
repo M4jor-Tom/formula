@@ -28,4 +28,8 @@ public:
     void displayPin(ostringstream &stream) override;
 };
 
+
+typedef Value Constante;
+typedef Value Variable;
+
 #endif // VALUE_H
