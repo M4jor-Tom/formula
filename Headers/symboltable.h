@@ -20,6 +20,7 @@ public:
     //TABLE EDITORS
     //Adds a Variable in table if no Variable with the same name exists in exists
     bool addVariable(Variable *toAdd);
+    bool addVariable(const string name, const float value);
     bool addVariable(const Variable &toAdd);
 
     //Edits a Variable with the same name than the given variable, to its variable

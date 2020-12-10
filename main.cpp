@@ -4,7 +4,6 @@
 #include "Headers/substraction.h"
 #include "Headers/product.h"
 #include "Headers/division.h"
-#include "Headers/value.h"
 #include "Headers/symboltable.h"
 
 #include <QString>
@@ -20,9 +19,10 @@ int main(int argc, char *argv[])
 
     SymbolTable sym;
 
-    sym.addVariable(Variable("A", 6));
+    //3 ways of creating a Variable
+    sym.addVariable("A", 6);
     sym.addVariable(Variable("B", 4));
-    sym.addVariable(Variable("C"));
+    sym.addVariable(new Variable("C"));
 
     sym.setValue(Variable("A", 18));
     //sym.deleteValue("B");   //<--Try uncommenting this to get the second Sum malfunctionning

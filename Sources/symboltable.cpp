@@ -35,6 +35,17 @@ bool SymbolTable::addVariable(Variable *toAdd)
     return true;
 }
 
+
+bool SymbolTable::addVariable(const string name, const float value)
+{
+    if(!symbolExists(name))
+        _variables.push_back(new Variable(name, value));
+    else return false;
+
+    return true;
+}
+
+
 bool SymbolTable::addVariable(const Variable &toAdd)
 {
     if(!symbolExists(toAdd.getName()))
