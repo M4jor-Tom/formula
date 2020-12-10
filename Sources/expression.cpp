@@ -5,7 +5,7 @@ Expression::Expression()
 
 }
 
-void Expression::relayAssignements(const list<Assignement *> assignements)
+void Expression::relayAssignements(const list<Assignement *> &assignements)
 {
     _assignements = assignements;
 }
@@ -33,7 +33,7 @@ bool Expression::newVariable(Assignement *assignement)
     return true;
 }
 
-bool Expression::newVariable(string name, float value)
+/*bool Expression::newVariable(string name, float value)
 {
     if(seekVariable(name) == -1)
     {
@@ -79,4 +79,19 @@ bool Expression::setVariable(string name, float value)
     }
 
     return true;
+}*/
+
+float Expression::calculer()
+{
+    return calculate();
+}
+
+void Expression::afficher(ostringstream &stream)
+{
+    displayN(stream);
+}
+
+void Expression::afficherNPI(ostringstream &stream)
+{
+    displayPin(stream);
 }

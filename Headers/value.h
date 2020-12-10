@@ -16,4 +16,7 @@ public:
     void displayPin(ostringstream &stream) override;
 };
 
+//French translation
+typedef Value Constante;
+
 #endif // VALUE_H

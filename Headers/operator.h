@@ -21,4 +21,7 @@ public:
     void displayPin(ostringstream &stream) override;
 };
 
+//French translation
+typedef Operator Operateur;
+
 #endif // OPERATOR_H

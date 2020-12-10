@@ -11,4 +11,7 @@ public:
     float calculate() override;
 };
 
+//French translation
+typedef Product Multiplication;
+
 #endif // PRODUCT_H

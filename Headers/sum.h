@@ -11,4 +11,8 @@ public:
     float calculate() override;
 };
 
+
+//French translation
+typedef Sum Addition;
+
 #endif // SUM_H

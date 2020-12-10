@@ -11,4 +11,8 @@ public:
     float calculate() override;
 };
 
+
+//French translation
+typedef Substraction Soustraction;
+
 #endif // SUB_H
