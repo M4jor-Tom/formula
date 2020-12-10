@@ -8,7 +8,7 @@ class Sum : public Operator
 public:
     Sum();
     Sum(Expression *lOpPt, Expression *rOpPt);
-    float calculate() override;
+    float calculate() const override;
 };
 
 

@@ -16,7 +16,7 @@ Sum::Sum(Expression *lOpPt, Expression *rOpPt)
     _operator = "+";
 }
 
-float Sum::calculate()
+float Sum::calculate() const
 {
     if(calculable())
         return _lOpPt -> calculate() + _rOpPt -> calculate();

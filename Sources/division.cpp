@@ -29,7 +29,7 @@ bool Division::calculable()
 }
 */
 
-float Division::calculate()
+float Division::calculate() const
 {
     if(calculable())
         return _lOpPt -> calculate() / _rOpPt -> calculate();

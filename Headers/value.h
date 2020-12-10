@@ -12,24 +12,35 @@ class Value: public Expression
 private:
     float _value;
     string _name;
-    unsigned short int interpretation;
+    unsigned short int _interpretation;
 public:
     //Constructors
     Value(float value);
     Value(string name);
     Value(string name, float value);
+    Value(const Value &v);
 
-    //Methods
-    bool calculable() override;
-    float calculate() override;
+    //--Methods
+    //Testers
+    bool calculable() const override;
+
+    //Setters
     bool setValue(float value);
-    string getRepresentation();
-    void displayN(ostringstream &stream) override;
-    void displayPin(ostringstream &stream) override;
+
+    //Getters
+    float calculate() const override;
+    string getRepresentation() const;
+    string getName() const;
+
+    //Displayers
+    void displayN(ostringstream &stream) const override;
+    void displayPin(ostringstream &stream) const override;
 };
 
-
-typedef Value Constante;
+//Alias (English + French)
 typedef Value Variable;
+
+//French translation
+typedef Value Constante;
 
 #endif // VALUE_H

@@ -5,6 +5,7 @@
 #include "Headers/product.h"
 #include "Headers/division.h"
 #include "Headers/value.h"
+#include "Headers/symboltable.h"
 
 #include <QString>
 
@@ -17,7 +18,14 @@ int main(int argc, char *argv[])
     QTextEdit txt;
     ostringstream _stream;
 
-    Variable A("A", 6), B("B", 4), C("C");
+    SymbolTable sym;
+
+    sym.addValue(Variable("A", 6));
+    sym.addValue(Variable("B", 4));
+    sym.addValue(Variable("C"));
+
+    sym.setValue(Value("A", 8));
+    //sym.deleteValue("B");   //<--Try uncommenting this to get the second Sum malfunctionning
 
     Addition sums[] =
     {
@@ -32,26 +40,25 @@ int main(int argc, char *argv[])
 
         //Operating named values
         Addition(
-            &A,
+            sym.getValue("A"),
             new Multiplication(
                 new Constante(3),
-                &B
+                sym.getValue("B")
             )
         ),
 
         //Can't operate this one
         Addition(
-            &A,
+            sym.getValue("A"),
             new Multiplication(
                 new Constante(3),
-                &C
+                sym.getValue("C")
             )
         )
     };
 
-    A.afficher(_stream); _stream << endl;
-    B.afficher(_stream); _stream << endl;
-    C.afficher(_stream); _stream << endl;
+
+    sym.displayContent(_stream);
     _stream << endl;
     for(Addition sum:sums)
     {

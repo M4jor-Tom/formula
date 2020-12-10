@@ -16,7 +16,7 @@ Substraction::Substraction(Expression *lOpPt, Expression *rOpPt)
     _operator = "-";
 }
 
-float Substraction::calculate()
+float Substraction::calculate() const
 {
     if(calculable())
         return _lOpPt -> calculate() - _rOpPt -> calculate();

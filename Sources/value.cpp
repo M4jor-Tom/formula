@@ -1,26 +1,31 @@
 #include "../Headers/value.h"
 
-Value::Value(float value): _value(value), interpretation(VALUE)
+Value::Value(float value): _value(value), _interpretation(VALUE)
 {
 
 }
 
-Value::Value(string name): _name(name), interpretation(NAME)
+Value::Value(string name): _name(name), _interpretation(NAME)
 {
 
 }
 
-Value::Value(string name, float value): _value(value), _name(name), interpretation(BOTH)
+Value::Value(string name, float value): _value(value), _name(name), _interpretation(BOTH)
 {
 
 }
 
-bool Value::calculable()
+Value::Value(const Value &v): _value(v._value), _name(v._name), _interpretation(v._interpretation)
 {
-    return interpretation == BOTH || interpretation == VALUE;
+
 }
 
-float Value::calculate()
+bool Value::calculable() const
+{
+    return _interpretation == BOTH || _interpretation == VALUE;
+}
+
+float Value::calculate() const
 {
     if(calculable())
         //BOTH or VALUE
@@ -36,24 +41,24 @@ bool Value::setValue(float value)
     _value = value;
 
     //Interpretation of object changed
-    if(interpretation == NAME || interpretation == BOTH)
-        interpretation = BOTH;
-    else if(interpretation != VALUE)
+    if(_interpretation == NAME || _interpretation == BOTH)
+        _interpretation = BOTH;
+    else if(_interpretation != VALUE)
         return false;
 
     return true;
 }
 
-string Value::getRepresentation()
+string Value::getRepresentation() const
 {
     stringstream ret;
-    switch(interpretation)
+    switch(_interpretation)
     {
         case BOTH:
             ret << "{" << _name << " = ";
         case VALUE:
             ret << _value;
-            if(interpretation == BOTH)
+            if(_interpretation == BOTH)
                 ret << "}";
             break;
 
@@ -67,12 +72,17 @@ string Value::getRepresentation()
     return ret.str();
 }
 
-void Value::displayN(ostringstream &stream)
+string Value::getName() const
+{
+    return _name;
+}
+
+void Value::displayN(ostringstream &stream) const
 {
     stream << getRepresentation();
 }
 
-void Value::displayPin(ostringstream &stream)
+void Value::displayPin(ostringstream &stream) const
 {
     stream << getRepresentation() << " ";
 }

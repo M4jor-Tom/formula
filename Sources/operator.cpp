@@ -5,7 +5,7 @@ Operator::Operator(): _lOpPt(NULL), _rOpPt(NULL), _operator("***undefined***")
 
 }
 
-bool Operator::calculable()
+bool Operator::calculable() const
 {
     if(operable())
         //Walkaround for division by 0 detection
@@ -13,12 +13,12 @@ bool Operator::calculable()
     else return false;
 }
 
-bool Operator::operable()
+bool Operator::operable() const
 {
     return _lOpPt != NULL && _rOpPt != NULL;
 }
 
-void Operator::displayN(ostringstream &stream)
+void Operator::displayN(ostringstream &stream) const
 {
     if(!operable())
     {
@@ -32,7 +32,7 @@ void Operator::displayN(ostringstream &stream)
     stream << ")";
 }
 
-void Operator::displayPin(ostringstream &stream)
+void Operator::displayPin(ostringstream &stream) const
 {
     if(!operable())
     {

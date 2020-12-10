@@ -8,7 +8,7 @@ class Product : public Operator
 public:
     Product();
     Product(Expression *lOpPt, Expression *rOpPt);
-    float calculate() override;
+    float calculate() const override;
 };
 
 

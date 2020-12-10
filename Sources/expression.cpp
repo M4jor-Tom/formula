@@ -5,17 +5,22 @@ Expression::Expression()
 
 }
 
-float Expression::calculer()
+Expression::~Expression()
+{
+
+}
+
+float Expression::calculer() const
 {
     return calculate();
 }
 
-void Expression::afficher(ostringstream &stream)
+void Expression::afficher(ostringstream &stream) const
 {
     displayN(stream);
 }
 
-void Expression::afficherNPI(ostringstream &stream)
+void Expression::afficherNPI(ostringstream &stream) const
 {
     displayPin(stream);
 }

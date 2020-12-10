@@ -16,7 +16,7 @@ Product::Product(Expression *lOpPt, Expression *rOpPt)
     _operator = "x";
 }
 
-float Product::calculate()
+float Product::calculate() const
 {
     if(calculable())
         return _lOpPt -> calculate() * _rOpPt -> calculate();

@@ -9,16 +9,17 @@ class Expression
 {
 public:
     Expression();
+    virtual ~Expression();
 
-    virtual void displayN(ostringstream &stream) = 0;
-    virtual void displayPin(ostringstream &stream) = 0;
-    virtual bool calculable() = 0;
-    virtual float calculate() = 0;
+    virtual void displayN(ostringstream &stream) const = 0;
+    virtual void displayPin(ostringstream &stream) const = 0;
+    virtual bool calculable() const = 0;
+    virtual float calculate() const = 0;
 
     //French translation
-    float calculer();
-    void afficher(ostringstream &stream);
-    void afficherNPI(ostringstream &stream);
+    float calculer() const;
+    void afficher(ostringstream &stream) const;
+    void afficherNPI(ostringstream &stream) const;
 };
 
 #endif // EXPRESSION_H

@@ -15,10 +15,10 @@ protected:
 public:
     Operator();
 
-    virtual bool calculable() override;
-    bool operable();
-    void displayN(ostringstream &stream) override;
-    void displayPin(ostringstream &stream) override;
+    virtual bool calculable() const override;
+    bool operable() const;
+    void displayN(ostringstream &stream) const override;
+    void displayPin(ostringstream &stream) const override;
 };
 
 

@@ -9,7 +9,7 @@ public:
     Division();
     Division(Expression *lOpPt, Expression *rOpPt);
     //bool calculable() override;
-    float calculate() override;
+    float calculate() const override;
 };
 
 #endif // DIVISION_H
