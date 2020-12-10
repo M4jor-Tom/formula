@@ -1,10 +1,6 @@
 #ifndef VALUE_H
 #define VALUE_H
 
-#define VALUE 0
-#define NAME 1
-#define BOTH 2
-
 #include "expression.h"
 
 class Value: public Expression
